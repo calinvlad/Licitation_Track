@@ -1,0 +1,12 @@
+{
+  "name": "licitation_watch",
+  "version": "1.0.0",
+  "description": "An ebay licitation watch for flippers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Calin Vlad",
+  "license": "ISC"
+}
