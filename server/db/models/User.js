@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt')
 function hash(user, options) {
   const saltRounds = 10;
   return bcrypt.genSalt(saltRounds)
-      .then(salt => bcrypt.hash(user.pass, salt, null))
+      .then(salt => bcrypt.hash(user.password, salt, null))
       .then(hash => {
-        user.setDataValue('pass', hash)
+        user.setDataValue('password', hash)
       })
 }
 
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'password'
     },
-    created_at: {
+    created: {
       type: 'TIMESTAMP',
       allowNull: false,
       field: 'created',

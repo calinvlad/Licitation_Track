@@ -1,13 +1,14 @@
 const db = require('../../../db/models')
+const moment = require('moment')
+const now = moment().format('YYYY/MM/DD HH:mm:ss')
 
 module.exports = {
-    async register(req, res, next) {
+    async index(req, res) {
         await db.User.create({
-            fname: req.body.fname,
-            lname: req.body.lname,
             email: req.body.email,
-            phone: req.body.phone,
-            pass: req.body.pass
+            password: req.body.password,
+            created: now,
+            updated: now
         })
             .then(async (user) => {
                 res.status(200).send({success: true, data: user})
