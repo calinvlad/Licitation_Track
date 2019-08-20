@@ -35,7 +35,7 @@ module.exports = {
                     })
             })
             .catch(err => {
-                res.status(500).send({success: false, message: 'Internal server error', err: err})
+                res.status(400).send({success: false, message: 'Your email or password is incorrect', err: err})
             })
     },
     async last(req, res, next) {
