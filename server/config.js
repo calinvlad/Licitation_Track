@@ -4,5 +4,10 @@ module.exports = {
         jwtSecret: process.env.jWT_SECRET || 'secret',
         expiresIn: process.env.expiresIn || 60 * 60 * 24, // 24 hours
         forgotExpiresIn: process.env.forgotExpiresIn || 60 * 5 // 5 minutes
+    },
+    user_status: {
+        active: 'Active',
+        inactive: 'Inactive',
+        danger: 'Danger'
     }
 }

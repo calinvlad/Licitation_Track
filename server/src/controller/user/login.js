@@ -10,7 +10,7 @@ function jwtSignUser (user) {
 }
 
 module.exports = {
-    async index(req, res) {
+    async index(req, res, next) {
         let user;
         await db.User.findOne({
             where: {
@@ -23,7 +23,8 @@ module.exports = {
                     .then(async (data) => {
                         if(data){
                             delete user.dataValues.password
-                            res.status(200).send({success: true, data: user, token: jwtSignUser(user.toJSON())})
+                            req.user = user
+                            next()
                         }
                         else {
                             res.status(400).send({success: false, message: 'Your email or password is incorrect'})
@@ -36,5 +37,10 @@ module.exports = {
             .catch(err => {
                 res.status(500).send({success: false, message: 'Internal server error', err: err})
             })
+    },
+    async last(req, res, next) {
+        const user = req.user
+        console.log(user)
+        res.status(200).send({success: true, data: user, token: jwtSignUser(user.toJSON())})
     }
 }

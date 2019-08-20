@@ -24,10 +24,26 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'email'
     },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      field: 'phone'
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       field: 'password'
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: true,
+      field: 'status'
+    },
+    password_attempts: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     },
     created: {
       type: 'TIMESTAMP',
@@ -38,6 +54,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
       field: 'updated',
+    },
+    last_login: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'last_login',
     }
   }, {
     freezeTableName: true,
